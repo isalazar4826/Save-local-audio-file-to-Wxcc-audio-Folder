@@ -24,6 +24,7 @@ This is a Python-based Flask application that allows users to upload local audio
 3. **Webex CC API Access**:
    - An API token with necessary permissions.
    - Replace the placeholder API token and organization ID in the script with your credentials.
+   - https://developer.webex-cx.com/documentation/audio-files/v1/create-audio-file
 
 ## Setup Instructions
 
