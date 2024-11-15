@@ -1,82 +1,66 @@
 
-# Audio Uploader for Webex CC
+# Flask Application for Uploading Audio Files to Webex CC
 
-Este proyecto es una aplicación web simple basada en Flask que permite subir archivos de audio desde una computadora local a la carpeta de audios de Webex Contact Center (Webex CC).
+This is a Python-based Flask application that allows users to upload local audio files from their computer to the Webex CC audio files repository.
 
-## Características
+## Features
 
-- Carga archivos de audio en formato WAV.
-- Genera un `blobId` único y metadatos asociados para cada archivo.
-- Envía la información y el archivo de audio a la API de Webex CC.
-- Muestra mensajes de éxito o error al usuario según el resultado de la operación.
+- **File Upload Interface**: Provides a web interface to upload `.wav` audio files.
+- **Webex CC Integration**: Sends the uploaded files to the Webex CC audio file repository.
+- **Real-Time Feedback**: Displays success or error messages based on the upload result.
 
-## Requisitos previos
+## Prerequisites
 
-- **Python 3.8 o superior**
-- **Pip** instalado en tu entorno.
-- Clave secreta para la aplicación Flask (definida en `app.secret_key`).
-- Token de autenticación de Webex CC válido.
+1. **Python Environment**:
+   - Python 3.x installed.
+2. **Dependencies**:
+   - Flask
+   - Requests
 
-## Instalación
-
-1. Clona este repositorio o descarga el código fuente.
-   ```bash
-   git clone https://github.com/tu-repositorio/audio-uploader-webex.git
-   cd audio-uploader-webex
-   ```
-
-2. Instala las dependencias necesarias:
+   You can install these dependencies by running:
    ```bash
    pip install flask requests
    ```
+3. **Webex CC API Access**:
+   - An API token with necessary permissions.
+   - Replace the placeholder API token and organization ID in the script with your credentials.
 
-3. Configura la clave secreta y el token de autenticación:
-   - Modifica el valor de `app.secret_key` con una clave segura.
-   - Actualiza el valor del token en la variable `HEADERS` en el archivo principal.
+## Setup Instructions
 
-## Uso
-
-1. Inicia la aplicación Flask:
+1. **Clone or Download** the repository to your local machine.
+2. **Replace the Placeholder Values** in the code:
+   - `app.secret_key`: Update to a secure secret key.
+   - `HEADERS['Authorization']`: Replace with your Webex CC API token.
+   - `URL`: Ensure the URL matches the Webex CC endpoint for your organization.
+3. **Run the Application**:
+   Execute the following command in your terminal:
    ```bash
    python app.py
    ```
+4. **Access the Application**:
+   Open your web browser and go to:
+   ```
+   http://127.0.0.1:5000/
+   ```
 
-2. Abre tu navegador web y navega a `http://127.0.0.1:5000/`.
+## Usage
 
-3. Selecciona un archivo de audio desde tu computadora y súbelo utilizando el formulario.
+1. Visit the home page of the application.
+2. Click "Choose File" and select a `.wav` audio file from your computer.
+3. Click the "Upload" button to submit the file.
+4. Receive feedback about the upload status:
+   - Success: Displays the file name and ID from Webex CC.
+   - Failure: Displays an error message with the HTTP status code or exception details.
 
-## Configuración
+![image](https://github.com/user-attachments/assets/8a2bddc6-ce6c-4196-9462-b16a8ed5a340)
 
-- **API Endpoint:**  
-  El endpoint para la API de Webex CC está definido en la variable `URL`. Asegúrate de que este sea el endpoint correcto para tu organización.
+## Notes
 
-- **Token de Autenticación:**  
-  Reemplaza el valor del token en la variable `HEADERS` con un token válido de Webex CC.
+- The application is configured to accept `.wav` files. Modify the `contentType` parameter in the code if you need to handle other formats.
+- Ensure your API token is valid and has not expired. Refresh it if necessary.
 
-- **Timeout de la Solicitud:**  
-  El tiempo de espera para las solicitudes HTTP está configurado en 10 segundos. Puedes ajustarlo en la función `requests.post()`.
+## Disclaimer
 
-## Archivos Importantes
+This application is for demonstration purposes only. Do not use it in production without securing sensitive credentials and testing thoroughly.
 
-- **`app.py`:** Archivo principal con la lógica de la aplicación.
-- **`templates/upload.html`:** Plantilla HTML para el formulario de subida.
 
-## Notas de Seguridad
-
-- **Clave secreta:**  
-  Asegúrate de usar una clave secreta segura para `app.secret_key` en producción.
-
-- **Token de autenticación:**  
-  Nunca expongas tu token de autenticación en un repositorio público. Considéralo información confidencial.
-
-- **Archivos subidos:**  
-  Este ejemplo no realiza validaciones avanzadas de los archivos subidos. Considera agregar verificaciones para evitar la carga de archivos maliciosos.
-
-## Contribuciones
-
-Si deseas contribuir, abre un *pull request* o reporta problemas en la sección de *issues*.
-
----
-
-**Licencia:** MIT  
-Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
